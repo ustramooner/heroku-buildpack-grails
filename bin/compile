@@ -14,6 +14,14 @@ CACHE_DIR=$2
 
 GRAILS_DIR=".grails"
 
+# Install Java 7 JDK
+JAVA_7_BINARY="https://s3.amazonaws.com/edify-soft/java/jdk-7u5-linux-x64.tar.gz"
+JAVA_7_VENDOR="vendor/java"
+
+# vendor java
+mkdir -p $1/$JAVA_7_VENDOR
+curl $JAVA_7_BINARY -o - | tar -xz -C $1/$JAVA_7_VENDOR -f -
+
 check_build_status()
 {
   if [ "${PIPESTATUS[*]}" != "0 0" ]; then
@@ -52,7 +60,7 @@ if [ ! -f $BUILD_DIR/application.properties ] ; then
     echo " !     Failed to build app"
     exit 1
 fi
-    
+
 GRAILS_VERSION=$(get_property $BUILD_DIR/application.properties 'app.grails.version')
 
 echo "-----> Grails $GRAILS_VERSION app detected"
@@ -76,11 +84,11 @@ else
   fi
 fi
 
-# This is a simplisitic way to only set JAVA_HOME when on Cedar. If you run this 
+# This is a simplisitic way to only set JAVA_HOME when on Cedar. If you run this
 # script locally and your jdk is not in this location, you're responsible for
 # setting it yourself. Need to find a smarter way of conditionally setting this var
 if [ -d /usr/lib/jvm/java-6-openjdk ] ; then
-    export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
+    export JAVA_HOME=$1/$JAVA_7_VENDOR
 fi
 export GRAILS_HOME=$CACHE_DIR/$GRAILS_DIR
 export PATH=$GRAILS_HOME/bin:$PATH
