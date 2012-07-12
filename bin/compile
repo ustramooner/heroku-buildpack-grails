@@ -90,12 +90,14 @@ JAVA_PACKAGE="https://s3.amazonaws.com/edify-soft/java/jdk-7u5-linux-x64.tar.gz"
 # Download Java 7 JDK
 echo "-----> Downloading Java 7u5 JDK"
 curl $JAVA_PACKAGE -s -o - | tar xzf - -C $VENDORED_JAVA
+echo "-----> Done"
 
 # vendor JAVA 7 JDK into the slug
+echo "-----> Vendoring Java 7u5 JDK into slug"
 PATH="$BUILD_DIR/bin:$PATH"
-echo "-----> Vendoring node into slug"
 mkdir -p "$BUILD_DIR/bin"
 ln -s "$VENDORED_JAVA/jdk1.7.0_05" "$BUILD_DIR/bin/jdk1.7.0_05"
+echo "-----> Done"
 
 # This is a simplisitic way to only set JAVA_HOME when on Cedar. If you run this
 # script locally and your jdk is not in this location, you're responsible for
