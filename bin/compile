@@ -96,7 +96,7 @@ echo "-----> Done"
 echo "-----> Vendoring Java 7u5 JDK into slug"
 PATH="$BUILD_DIR/bin:$PATH"
 mkdir -p "$BUILD_DIR/bin"
-ln -s "$VENDORED_JAVA/jdk1.7.0_05" "$BUILD_DIR/bin/jdk1.7.0_05"
+cp -R "$VENDORED_JAVA/jdk1.7.0_05" "$BUILD_DIR/bin/jdk1.7.0_05"
 echo "-----> Done"
 
 # This is a simplisitic way to only set JAVA_HOME when on Cedar. If you run this
