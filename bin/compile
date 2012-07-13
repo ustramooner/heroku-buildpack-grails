@@ -103,7 +103,6 @@ echo "-----> Vendoring Grails $GRAILS_VERSION into slug"
 mkdir -p "$BUILD_DIR/bin"
 cp -R "$GRAILS_DIR" "$BUILD_DIR/bin/grails"
 echo "-----> Done"
-$GRAILS_DIR
 
 # This is a simplisitic way to only set JAVA_HOME when on Cedar. If you run this
 # script locally and your jdk is not in this location, you're responsible for
