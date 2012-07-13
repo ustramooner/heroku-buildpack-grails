@@ -156,9 +156,3 @@ if [ ! -d server ] ; then
     echo "vendored:$JETTY_RUNNER_VERSION" > server/jettyVersion
     echo "vendored:$JETTY_RUNNER_VERSION" > $CACHE_DIR/jettyVersion
 fi
-
-MIGRATECMD="grails -Dlogback.configurationFile=grails-app/conf/logback.xml $BUILDCMD_OPT -Divy.default.ivy.user.dir=$CACHE_DIR prod dbm-update --non-interactive"
-echo "-----> Executing $MIGRATECMD"
-eval "$MIGRATECMD" | sed -u 's/^/       /'
-echo "-----> Done"
-
