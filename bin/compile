@@ -99,10 +99,10 @@ cp -R "$VENDORED_JAVA/jdk1.7.0_05" "$BUILD_DIR/bin/jdk1.7.0_05"
 echo "-----> Done"
 
 # vendor Grails into the slug to run tasks
-echo "-----> Vendoring Grails $GRAILS_VERSION into slug"
-mkdir -p "$BUILD_DIR/bin"
-cp -R "$GRAILS_DIR" "$BUILD_DIR/bin/grails"
-echo "-----> Done"
+# echo "-----> Vendoring Grails $GRAILS_VERSION into slug"
+# mkdir -p "$BUILD_DIR/bin"
+# cp -R "$GRAILS_DIR" "$BUILD_DIR/bin/grails"
+# echo "-----> Done"
 
 # This is a simplisitic way to only set JAVA_HOME when on Cedar. If you run this
 # script locally and your jdk is not in this location, you're responsible for
