@@ -6,8 +6,8 @@ BUILD_DIR=$1
 cat <<EOF
 ---
 config_vars:
-  JAVA_HOME: bin/jdk1.7.0_05
-  PATH: bin/jdk1.7.0_05/bin:/usr/local/bin:/usr/bin:/bin
+  JAVA_HOME: vendor/jdk1.7.0_05
+  PATH: vendor/jdk1.7.0_05/bin:/usr/local/bin:/usr/bin:/bin
   JAVA_OPTS: -Xmx384m -Xss512k -XX:+UseCompressedOops
 addons:
   heroku-postgresql:dev

@@ -94,8 +94,8 @@ echo "-----> Done"
 
 # vendor JAVA 7 JDK into the slug
 echo "-----> Vendoring Java 7u5 JDK into slug"
-mkdir -p "$BUILD_DIR/bin"
-cp -R "$VENDORED_JAVA/jdk1.7.0_05" "$BUILD_DIR/bin/jdk1.7.0_05"
+mkdir -p "$BUILD_DIR/vendor"
+cp -R "$VENDORED_JAVA/jdk1.7.0_05" "$BUILD_DIR/vendor/jdk1.7.0_05"
 echo "-----> Done"
 
 # vendor Grails into the slug to run tasks
@@ -142,12 +142,12 @@ if [ "$GRAILS_VERSION" != "1.3.7" ] ; then
     BUILDCMD_OPT="-plain-output"
 fi
 
-COMPILECMD="grails -Dlogback.configurationFile=grails-app/conf/logback.xml -Divy.default.ivy.user.dir=$CACHE_DIR prod compile --non-interactive"
+COMPILECMD="grails -Divy.default.ivy.user.dir=$CACHE_DIR prod compile --non-interactive"
 echo "-----> Executing $COMPILECMD"
 eval "$COMPILECMD" | sed -u 's/^/       /'
 check_build_status
 
-BUILDCMD="grails -Dlogback.configurationFile=grails-app/conf/logback.xml $BUILDCMD_OPT -Divy.default.ivy.user.dir=$CACHE_DIR prod war --non-interactive"
+BUILDCMD="grails $BUILDCMD_OPT -Divy.default.ivy.user.dir=$CACHE_DIR prod war --non-interactive"
 echo "-----> Executing $BUILDCMD"
 eval "$BUILDCMD" | sed -u 's/^/       /'
 check_build_status
