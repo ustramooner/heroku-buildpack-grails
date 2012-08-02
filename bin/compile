@@ -107,8 +107,8 @@ echo "-----> Done"
 # This is a simplisitic way to only set JAVA_HOME when on Cedar. If you run this
 # script locally and your jdk is not in this location, you're responsible for
 # setting it yourself. Need to find a smarter way of conditionally setting this var
-if [ -d $BUILD_DIR/bin/jdk1.7.0_05 ] ; then
-    export JAVA_HOME=$BUILD_DIR/bin/jdk1.7.0_05
+if [ -d $BUILD_DIR/vendor/jdk1.7.0_05 ] ; then
+    export JAVA_HOME=$BUILD_DIR/vendor/jdk1.7.0_05
 fi
 export GRAILS_HOME=$CACHE_DIR/$GRAILS_DIR
 export PATH=$GRAILS_HOME/bin:$PATH
