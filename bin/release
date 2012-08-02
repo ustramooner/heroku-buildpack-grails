@@ -8,7 +8,7 @@ cat <<EOF
 config_vars:
   JAVA_HOME: vendor/jdk1.7.0_05
   PATH: vendor/jdk1.7.0_05/bin:/usr/local/bin:/usr/bin:/bin
-  JAVA_OPTS: -Xmx384m -Xss512k -XX:+UseCompressedOops
+  JAVA_OPTS: -server -Xms384m -Xmx384m -Xss512k -XX:+UseCompressedOops
 addons:
   heroku-postgresql:dev
 
