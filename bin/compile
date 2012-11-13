@@ -88,26 +88,11 @@ else
   fi
 fi
 
-# Install Java 7 JDK
-VENDORED_JAVA="$(mktmpdir jdk)"
-JAVA_PACKAGE="https://s3.amazonaws.com/edify-soft/java/jdk-7u6-linux-x64.tar.gz"
-
-# Download Java 7 JDK
-echo "-----> Downloading Java 7u6 JDK"
-curl $JAVA_PACKAGE -s -o - | tar xzf - -C $VENDORED_JAVA
-echo "-----> Done"
-
-# vendor JAVA 7 JDK into the slug
-echo "-----> Vendoring Java 7u6 JDK into slug"
-mkdir -p "$BUILD_DIR/vendor"
-cp -R "$VENDORED_JAVA/jdk1.7.0_06" "$BUILD_DIR/vendor/jdk1.7.0_06"
-echo "-----> Done"
-
 # This is a simplisitic way to only set JAVA_HOME when on Cedar. If you run this
 # script locally and your jdk is not in this location, you're responsible for
 # setting it yourself. Need to find a smarter way of conditionally setting this var
-if [ -d $BUILD_DIR/vendor/jdk1.7.0_06 ] ; then
-    export JAVA_HOME=$BUILD_DIR/vendor/jdk1.7.0_06
+if [ -d /usr/lib/jvm/java-6-openjdk ] ; then
+    export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
 fi
 export GRAILS_HOME=$CACHE_DIR/$GRAILS_DIR
 export PATH=$GRAILS_HOME/bin:$PATH
